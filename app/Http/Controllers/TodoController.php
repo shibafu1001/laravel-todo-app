@@ -25,7 +25,9 @@ class TodoController extends Controller
         $todo->user_id = Auth::id();
         $todo->goal_id = $goal->id;
         $todo->done = false;
-        $todo->save();        
+        $todo->save();    
+        
+        $todo->tags()->sync($request->input('tag_ids'));
 
         return redirect()->route('goals.index');
     }
@@ -47,6 +49,10 @@ class TodoController extends Controller
         $todo->goal_id = $goal->id;
         $todo->done = $request->boolean('done', $todo->done);
         $todo->save();
+
+        if (!$request->has('done')) {
+            $todo->tags()->sync($request->input('tag_ids'));
+        };        
 
         return redirect()->route('goals.index');
     }
