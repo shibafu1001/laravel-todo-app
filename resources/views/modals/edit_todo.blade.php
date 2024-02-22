@@ -26,7 +26,7 @@
                      </div>     
                  </div>
                  <div class="modal-footer">
-                     <button type="submit" class="btn btn-primary">更新</button>
+                     <button type="submit" class="btn btn-primary">更新!</button>
                  </div>
              </form>
          </div>
